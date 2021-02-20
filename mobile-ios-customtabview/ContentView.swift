@@ -14,13 +14,22 @@ struct ContentView: View {
     }
     
     @State var selectedIndex = 0
+    let tabBarImageNames = ["person", "gear", "plus.app.fill", "pencil", "lasso"]
     
     var body: some View {
         VStack {
             ZStack {
                 switch selectedIndex {
                 case 0:
-                    Text("First")
+                    NavigationView {
+                        Text("First")
+                            .navigationTitle("First Tab")
+                    }
+                
+                case 1:
+                    ScrollView {
+                        Text("Scroll View")
+                    }
                 default:
                     Text("Remaining tabs")
                 }
@@ -29,7 +38,19 @@ struct ContentView: View {
             Spacer()
             
             HStack {
-                Text("First tab button")
+                ForEach(0..<5) { num in
+                    
+                    Button(action: {
+                        selectedIndex = num
+                    }, label: {
+                        Spacer()
+                        Image(systemName: tabBarImageNames[num])
+                            .font(.system(size: 24, weight: .bold))
+                            .foregroundColor(selectedIndex == num ? Color(.black) : Color(white: 0.8))
+                        Spacer()
+                        
+                    })
+                }
             }
         }
       
