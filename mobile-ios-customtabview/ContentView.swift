@@ -44,9 +44,17 @@ struct ContentView: View {
                         selectedIndex = num
                     }, label: {
                         Spacer()
-                        Image(systemName: tabBarImageNames[num])
-                            .font(.system(size: 24, weight: .bold))
-                            .foregroundColor(selectedIndex == num ? Color(.black) : Color(white: 0.8))
+
+                        if num == 2 {
+                            Image(systemName: tabBarImageNames[num])
+                                .font(.system(size: 44, weight: .bold))
+                                .foregroundColor(Color(.red))
+                        } else {
+                            Image(systemName: tabBarImageNames[num])
+                                .font(.system(size: 24, weight: .bold))
+                                .foregroundColor(selectedIndex == num ? Color(.black) : Color(white: 0.8))
+                        }
+                        
                         Spacer()
                         
                     })
