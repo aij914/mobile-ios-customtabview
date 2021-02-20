@@ -46,12 +46,14 @@ struct ContentView: View {
                         Text("Scroll View")
                     }
                 default:
-                    Text("Remaining tabs")
+                    NavigationView {
+                        Text("Remaining tabs")
+                    }
                 }
             }
                         
             Divider()
-                .padding(.bottom, 12)
+                .padding(.bottom, 8)
             
             HStack {
                 ForEach(0..<5) { num in
